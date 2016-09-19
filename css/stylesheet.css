@@ -74,6 +74,9 @@ li.city-heading {
 	font-size: 1em;
 }
 
+.city-list-select {
+	display: none;
+}
 /* D3 Chart Stylesheet */
 .axis path,
 .axis line {
@@ -86,4 +89,62 @@ li.city-heading {
   fill: none;
   stroke: black;
   stroke-width: 1.5px;
+}
+/* ENDS */
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+	body {
+		font-size: 10px;
+		background: none;
+		background-color: #f0f0f0;
+	}
+	#main {
+		display: block;
+	}
+	.city-list {
+		display: none;
+	}
+
+	.sidebar {
+		width: auto;
+		margin: 10px;
+		box-sizing: border-box;
+	}
+
+	.city-list-select {
+		display: block;
+		width: 100%;
+	}
+
+	.city-list-select {
+		display: block;
+		width: 100%;
+	}
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+	body {
+		font-size: 10px;
+		background: none;
+		background-color: #f0f0f0;
+	}
+	#main {
+		display: block;
+	}
+	.city-list {
+		display: none;
+	}
+
+	.sidebar {
+		width: auto;
+		margin: 10px;
+		box-sizing: border-box;
+	}
+
+	.city-list-select {
+		display: block;
+		width: 100%;
+	}
+
 }
