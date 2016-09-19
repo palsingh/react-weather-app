@@ -38,7 +38,7 @@ class Chart extends React.Component {
 		    .append("g")
 		        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-		// Get the data
+
 	    this.props.data.time.forEach(function(d) {
 	        d.from = parseDate(d.from);
 	        d.temperature.value = +d.temperature.value;
@@ -67,7 +67,7 @@ class Chart extends React.Component {
 	}
 
 	render () {
-		this.renderChart();
+		this.renderChart(); // this can be removed from here and put it in lifecycle methods
 		return (
 			<div className="chart-wrapper">
 				<h3>Weather forecast of next 4 days</h3>

@@ -1,14 +1,20 @@
 class Cities extends React.Component {
 
+	/**
+	 * Execute method of parent component to update state. Mobile only.
+	 * @param {Object} e - Event object for change in value of selectbox
+	 */
 	changeLocationSelect (e) {
 		this.props.handleUserInput(e.target.value);
 	}
 
+	/**
+	 * Execute method of parent component to update state
+	 * @param {string} city - Name of the city for which weather data will be loaded
+	 */
 	changeLocation (city) {
 		this.props.handleUserInput(city);
 	}
-
-	
 
 	render () {
 		let that = this;

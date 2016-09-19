@@ -10,6 +10,10 @@ class WeatherApp extends React.Component {
 		this.onCityChange = this.onCityChange.bind(this);
 	}
 
+	/**
+	 * If current city is not selected, load weather data with first city in cities list
+	 * else load weather data for selected city
+	 */
 	componentDidMount () {
 		if (this.state.currentCity === '') {
 			this.setState({ currentCity: this.props.cities[0]}, () => {
@@ -21,8 +25,14 @@ class WeatherApp extends React.Component {
 		
   	}
 
+	/**
+	 * Call API service to get weather and forecast of selected city
+	 * parse the xml response to json and update state
+	 * @param {string} city - Name of the city for which weather data will be loaded
+	 */
   	fetchWeatherForecast (city) {
   		let that = this;
+
   		this.api.fetchWeatherForecast(city).then(response => {
   			let x2js = new X2JS({attributePrefix : ''}),
   				weatherData = x2js.xml2js(response.weather.data),
@@ -32,10 +42,17 @@ class WeatherApp extends React.Component {
 		});
   	}
 
+  	/**
+  	 * Method being used by child components to load new city data and update state
+  	 * @param {string} city - Name of the city for which weather data will be loaded
+  	 */
   	onCityChange(city) {
   		this.fetchWeatherForecast(city);
   	}
 
+  	/**
+  	 * Render all components
+  	 */
 	render () {
 		let country = this.state.data.current ? this.state.data.current.city.country : '',
 			temperature = this.state.data.current ? this.state.data.current.temperature : '',
@@ -57,7 +74,8 @@ class WeatherApp extends React.Component {
 		)
 	}
 }
-//<Chart data={forecast} />
+
+// Dummy cities data
 var cities = ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia", "San Francisco", "Mexico City", "Tokyo", "London", "Paris", "New Delhi", "Kuala Lumpur"];
 
 ReactDOM.render(<WeatherApp appid="3c3cdd60dedd1935630b41776bcba5cf" api="http://api.openweathermap.org/data/2.5/" format="xml" cities={cities} />, document.getElementById("container"));
