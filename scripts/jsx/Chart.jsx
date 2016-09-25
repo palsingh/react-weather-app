@@ -66,8 +66,15 @@ class Chart extends React.Component {
 
 	}
 
+	componentDidMount () {
+		this.renderChart();
+	}
+
+	componentWillUpdate () {
+		this.renderChart();
+	}
+
 	render () {
-		this.renderChart(); // this can be removed from here and put it in lifecycle methods
 		return (
 			<div className="chart-wrapper">
 				<h3>Weather forecast of next 4 days</h3>

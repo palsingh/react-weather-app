@@ -2,7 +2,8 @@
 This react application shows weather and forecast of few major cities around the world
 
 # Prerequisite
-> - Nodejs
+> - NodeJS
+> - Grunt installed globally. If not installed, execute `npm install -g grunt`. Execute this comment after installation of NodeJS.
 
 # Project Setup
 
