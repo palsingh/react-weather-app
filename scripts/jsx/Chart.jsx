@@ -1,7 +1,7 @@
 class Chart extends React.Component {
 
-	renderChart() {
-		if (!this.props.data) {
+	renderChart(data) {
+		if (!data) {
 			return;
 		}
 		d3.selectAll("svg > *").remove();
@@ -39,19 +39,19 @@ class Chart extends React.Component {
 		        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-	    this.props.data.time.forEach(function(d) {
+	    data.time.forEach(function(d) {
 	        d.from = parseDate(d.from);
 	        d.temperature.value = +d.temperature.value;
 	    });
 
 	    // Scale the range of the data
-	    x.domain(d3.extent(this.props.data.time, function(d) { return d.from; }));
-	    y.domain([0, d3.max(this.props.data.time, function(d) { return d.temperature.value; })]);
+	    x.domain(d3.extent(data.time, function(d) { return d.from; }));
+	    y.domain([0, d3.max(data.time, function(d) { return d.temperature.value; })]);
 
 	    // Add the valueline path.
 	    svg.append("path")
 	        .attr("class", "line")
-	        .attr("d", valueline(this.props.data.time));
+	        .attr("d", valueline(data.time));
 
 	    // Add the X Axis
 	    svg.append("g")
@@ -66,12 +66,8 @@ class Chart extends React.Component {
 
 	}
 
-	componentDidMount () {
-		this.renderChart();
-	}
-
-	componentWillUpdate () {
-		this.renderChart();
+	componentWillReceiveProps (nextProps) {
+		this.renderChart(nextProps.data);
 	}
 
 	render () {
